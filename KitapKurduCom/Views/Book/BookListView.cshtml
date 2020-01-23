@@ -1,0 +1,36 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<KitapKurdu.UI.Models.Entity.Book>
+
+
+@foreach (var item in Model)
+{
+    <div class="list__view mt--40">
+        <div class="thumb">
+            <a class="first__img" href="@Url.Action("Details","Book",new { id=item.ID })"><img src="@(item.BookImages.FirstOrDefault()!=null?item.BookImages.FirstOrDefault().ImageUrl:"")" alt="product images"></a>
+            <a class="second__img animation1" href="@Url.Action("Details","Book",new { id=item.ID })"><img src="@(item.BookImages.FirstOrDefault()!=null?item.BookImages.FirstOrDefault().ImageUrl:"")" alt="product images"></a>
+        </div>
+        <div class="content">
+            <h2><a href="@Url.Action("Details","Book",new { id=item.ID })">@item.BookName</a></h2>
+            <ul class="rating d-flex">
+                <li class="on"><i class="fa fa-star-o"></i></li>
+                <li class="on"><i class="fa fa-star-o"></i></li>
+                <li class="on"><i class="fa fa-star-o"></i></li>
+                <li class="on"><i class="fa fa-star-o"></i></li>
+                <li><i class="fa fa-star-o"></i></li>
+                <li><i class="fa fa-star-o"></i></li>
+            </ul>
+            <ul class="prize__box">
+                <li>@item.UnitPrice.ToString("0.00₺")</li>
+                <li class="old__prize">@((item.UnitPrice * 1.1M).ToString("0.00₺"))</li>
+            </ul>
+            <p>@item.Description</p>
+            <ul class="cart__action d-flex">
+                <li class="cart" ><a class="kartaekle" id="@item.ID">Add to cart</a></li>
+            </ul>
+
+        </div>
+    </div>
+}
+    <ul class="wn__pagination">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+    </ul>

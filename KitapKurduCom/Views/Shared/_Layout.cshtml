@@ -1,0 +1,407 @@
+﻿<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Home | Bookshop Responsive Bootstrap4 Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicons -->
+
+    <link rel="shortcut icon" href="@Url.Content("/images/favicon.ico")">
+    <link rel="apple-touch-icon" href="@Url.Content("/images/icon.png")">
+
+    <!-- Google font (font-family: 'Roboto', sans-serif; Poppins ; Satisfy) -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,600,600i,700,700i,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    @*<link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/plugins.css">
+        <link rel="stylesheet" href="style.css">*@
+    @Styles.Render("~/css")
+    <!-- Cusom css -->
+    @*<link rel="stylesheet" href="css/custom.css">*@
+
+    <!-- Modernizer js -->
+    @*<script src="js/vendor/modernizr-3.5.0.min.js"></script>*@
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("styles", required: false)
+
+    
+
+
+    @*@Scripts.Render("~/bundles/ckeditor")*@
+
+</head>
+
+<body>
+    <div class="loader book" id="spinner">
+            <figure class="page"></figure>
+            <figure class="page"></figure>
+            <figure class="page"></figure>
+        </div>
+  
+    <div class="wrapper" id="wrapper">
+        <header id="wn__header" class="header__area header__absolute sticky__header">
+            @RenderSection("kampanyahover", required: false)
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-6 col-lg-2">
+                        <div class="logo">
+                            <a href="@Url.Action("Index","Index")">
+                                <img src="@Url.Content("/images/logo/logo.png")" alt="logo images">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 d-none d-lg-block">
+                        <nav class="mainmenu__nav">
+                            <ul class="meninmenu d-flex justify-content-start">
+                                <li class="drop with--one--item"><a href="@Url.Action("Index","Index")">Home</a></li>
+
+                                <li class="drop">
+                                    <a href="@Url.Action("Index","Book")">Books</a>
+
+                                </li>
+
+                                <li><a href="@Url.Action("Contact","Index")">Contact</a></li>
+
+                                <li><a href="@Url.Action("About","Index")">About</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-6 col-lg-2">
+                        <ul class="header__sidebar__right d-flex justify-content-end align-items-center">
+                            @RenderSection("aramaButonu",required:false)
+                            <li class="shopcart">
+                                <a class="cartbox_active" href="#"><span class="product_qun sayac"></span></a>
+                                <!-- Start Shopping Cart -->
+                                <div class="block-minicart minicart__active" id="shopcartopen">
+                                    <div class="minicart-content-wrapper">
+                                        <div class="micart__close">
+                                            <span>close</span>
+                                        </div>
+                                        <div class="items-total d-flex justify-content-between">
+                                            <span class="sayac">3</span> <span>items</span>
+                                            <span>Cart Subtotal</span>
+                                        </div>
+                                        <div class="total_amount text-right">
+                                            <span class="toptutar"></span>
+                                        </div>
+
+                                        <div class="mini_action checkout">
+                                            <a class="checkout__btn" href="@Url.Action("Detail","ShoppingCart")">Go to Checkout</a>
+                                        </div>
+                                        <div class="single__items">
+                                            <div class="miniproduct" id="alisverissepeti" style="height:300px;overflow-y:auto;">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="setting__bar__icon">
+                                <a class="setting__active" href="#"></a>
+                                <div class="searchbar__content setting__block">
+                                    <div class="content-inner">
+                                        <div class="switcher-currency">
+                                            <strong class="label switcher-label">
+                                                <span>My Account</span>
+                                            </strong>
+                                            <div class="switcher-options">
+                                                <div class="switcher-currency-trigger">
+                                                    <div class="setting__menu">
+                                                        @if (Session["kullanici"] != null)
+                                                        {
+                                                            <span><a href="@Url.Action("Index","MyAccount")">My Account</a></span>
+                                                            <span><a href="@Url.Action("LogOut","MyAccount")">Sign Out</a></span>
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <span><a href="@Url.Action("Index","Account")">Sign In</a></span>
+                                                            <span><a href="@Url.Action("Register","Account")">Create An Account</a></span>
+
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Start Mobile Menu -->
+                <div class="row d-none">
+                    <div class="col-lg-12 d-none">
+                        <nav class="mobilemenu__nav">
+                            <ul class="meninmenu">
+                                <li><a href="@Url.Action("index","index")">Home</a></li>
+                                <li>
+                                    <a href="#">Pages</a>
+                                    <ul>
+                                        <li><a href="about.html">About Page</a></li>
+                                        <li><a href="my-account.html">My Account</a></li>
+                                        <li><a href="cart.html">Cart Page</a></li>
+                                        <li><a href="checkout.html">Checkout Page</a></li>
+                                        <li><a href="wishlist.html">Wishlist Page</a></li>
+                                        <li><a href="error404.html">404 Page</a></li>
+                                        <li><a href="faq.html">Faq Page</a></li>
+                                        <li><a href="team.html">Team Page</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <!-- End Mobile Menu -->
+                <div class="mobile-menu d-block d-lg-none">
+                </div>
+                <!-- Mobile Menu -->
+            </div>
+        </header>
+        
+        @RenderBody()
+
+        <footer id="wn__footer" class="footer__area bg__cat--8 brown--color">
+            <div class="footer-static-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="footer__widget footer__menu">
+                                <div class="ft__logo">
+                                    <a href="index.html">
+                                        <img src="/images/logo/3.png" alt="logo">
+                                    </a>
+                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered duskam alteration variations of passages</p>
+                                </div>
+                                <div class="footer__content">
+                                    <ul class="social__net social__net--2 d-flex justify-content-center">
+                                        <li><a href="#"><i class="bi bi-facebook"></i></a></li>
+                                        <li><a href="#"><i class="bi bi-google"></i></a></li>
+                                        <li><a href="#"><i class="bi bi-twitter"></i></a></li>
+                                        <li><a href="#"><i class="bi bi-linkedin"></i></a></li>
+                                        <li><a href="#"><i class="bi bi-youtube"></i></a></li>
+                                    </ul>
+                                    <ul class="mainmenu d-flex justify-content-center">
+                                        <li><a href="index.html">Trending</a></li>
+                                        <li><a href="index.html">Best Seller</a></li>
+                                        <li><a href="index.html">All Product</a></li>
+                                        <li><a href="index.html">Wishlist</a></li>
+                                        <li><a href="index.html">Blog</a></li>
+                                        <li><a href="index.html">Contact</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copyright__wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="copyright">
+                                <div class="copy__right__inner text-left">
+                                    <p>Copyright <i class="fa fa-copyright"></i> <a href="https://freethemescloud.com/">Free themes Cloud.</a> All Rights Reserved</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="payment text-right">
+                                <img src="@Url.Content("/images/icons/payment.png")" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/popper")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/plugins")
+    @Scripts.Render("~/bundles/active")
+    @RenderSection("scripts", required: false)
+    @*<script src="js/vendor/jquery-3.2.1.min.js"></script>*@
+    @*<script src="js/popper.min.js"></script>*@
+    @*<script src="js/bootstrap.min.js"></script>*@
+    @*<script src="js/plugins.js"></script>*@
+    @*<script src="js/active.js"></script>*@
+    <script>
+        $(document).ready(function () {
+            GetCartItems();
+            AddCart();
+            AddCartDetail();
+
+
+            $('#pencere').click(function () {
+                $('#shopcartopen').removeClass('is-visible');
+            });
+            $(document).on("click", "kategori", function () {
+                var id = $(this).attr("id");
+
+                }
+            )
+                $(document).on('click', '.karttansil', function () {
+                var id = $(this).attr("id");
+                $.ajax({
+                type: 'post',
+                url: '@Url.Action("DeleteCartItem","Book")',
+                data: { "id": id },
+                dataType: 'json',
+                success: function (data) {
+
+                    GetCartItems();
+
+                },
+                error: function () {
+                    alert("Hata");
+                }
+
+            });
+            })
+        });
+
+        function AddCart() {
+            $(document).on('click', '.kartaekle', function (event) {
+            var id = $(this).attr("id");
+                var target = $(event.target)
+                var quantity=null;
+                if (target.is("button")) {
+                    quantity = $("#qty").val();
+                }
+            //if ($(this).is("input")) {
+            //    quantity = $(this).val();
+            //     }
+                $.ajax({
+                    type: 'post',
+                    url: '@Url.Action("AddCart","Book")',
+                    data: { "id": id, "quantity": quantity },
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.sessionValue == true) {
+                            location.href = "/Account/Index"
+                        }
+                        else {
+                            GetCartItems();
+                            if (target.is("i") || target.is("a")) {
+                            $('#shopcartopen').addClass('is-visible');
+
+                            }
+                        }
+
+                    },
+                    error: function () {
+                        alert("Hata");
+                    }
+
+                });
+
+            })
+        }
+        function AddCartDetail() {
+            $(document).on('change', '.kartaeklee', function (event) {
+                var id = $(this).attr("id");
+                quantity = $(this).val();
+                $.ajax({
+                    type: 'post',
+                    url: '@Url.Action("AddCart","Book")',
+                    data: { "id": id, "quantity": quantity },
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.sessionValue == true) {
+                            location.href = "/Account/Index"
+                        }
+                        else {
+                            GetCartItems();
+                        }
+
+                    },
+                    error: function () {
+                        alert("Hata");
+                    }
+
+                });
+
+            })
+        }
+        function GetCartItems() {
+            var topTutar=0;
+             $.ajax({
+                type: 'get',
+                url: '@Url.Action("GetBooks","Book")',
+                dataType: 'json',
+                 success: function (data) {
+                         $('.sayac').text(data.length)
+                         $("#alisverissepeti").empty();
+                     $("#sepeturunler").empty();
+                     $(".checkout").empty();
+                     if (data.length>0) {
+
+                     $(".checkout").append(`<a class="checkout__btn" href="@Url.Action("Detail","ShoppingCart")">Go to Checkout</a>`);
+                     }
+                         for (var i = 0; i < data.length; i++) {
+                             topTutar += data[i].UnitPrice * data[i].Quantity;
+                             $("#alisverissepeti").append(`<div class="item01 d-flex mt--20">
+                        <div class="thumb">
+                            <a href="/Book/Details?id=`+ data[i].ID + `"><img src="` + data[i].ImageUrl + `" alt="product images" width="75" height="94"></a>
+                        </div>
+                            <div class="content">
+                                <h6><a href="/Book/Details?id=`+ data[i].ID + `">`+ data[i].BookName + `</a></h6>
+                                <span class="prize">`+ data[i].UnitPrice + `₺</span>
+                                <div class="product_prize d-flex justify-content-between">
+                                    <span class="qun">`+ data[i].Quantity + `'piece</span>
+                    <ul class="d-flex justify-content-end">
+                                        <li><a href="#" ><i class="zmdi zmdi-settings" ></i></a></li>
+                                        <li><a class="karttansil" id="`+ data[i].ID + `"><i class="zmdi zmdi-delete"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>`);
+
+                             if ($(location).attr('pathname') == "/ShoppingCart/Detail") {
+                             $("#sepeturunler").append(`
+                                <tr>
+                                    <td class="product-thumbnail"><a href="/Book/Details?id=`+ data[i].ID + `"><img src="`+ data[i].ImageUrl + `" alt="product img" width="80" height="100"></a></td>
+                                    <td class="product-name"><a href="/Book/Details?id=`+ data[i].ID + `">`+ data[i].BookName + `</a></td>
+                                    <td class="product-price"><span class="amount">`+ data[i].UnitPrice + `</span></td>
+                                    <td class="product-quantity"><input min="1" class="kartaeklee" type="number" id="`+ data[i].ID + `" value="` + data[i].Quantity + `"></td>
+                                    <td class="product-subtotal">`+ data[i].UnitPrice * data[i].Quantity + `</td>
+                                    <td class="product-remove"><a id=`+ data[i].ID + ` class="karttansil">X</a></td>
+                                </tr>`);
+
+                             }
+
+                             $('.karttoplam').text(topTutar + "₺");
+                         }
+                     $('.toptutar').text(topTutar + "₺");
+
+
+
+                },
+                 error: function () {
+
+
+                 },
+                 complete: function () {
+
+                 }
+
+            });
+        }
+
+    </script>
+
+</body>
+</html>
+

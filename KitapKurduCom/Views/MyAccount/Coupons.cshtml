@@ -1,0 +1,58 @@
+﻿
+
+@{
+    ViewBag.Title = "Coupons";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Styles
+{
+    <style>
+        .container {
+            margin-top: 120px;
+            padding-bottom: 80px;
+            width: 1100px;
+        }
+    </style>
+}
+
+<div class="container">
+    <div class="row" style="line-height:30px;border:1px solid black;margin-bottom:10px;">
+        <div class="col-md-12" style="font:bold;font-size:20px;background-color:peru;">
+            <div>İNDİRİM KUPONLARIM</div>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom:20px;">
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th><strong>TOPLAM ALIŞVERİŞ ÇEKİ</strong></th>
+                        <th><strong>10 ₺</strong></th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <div class="row" style="">
+        <div class="col-md-12">
+            <table class="table table-bordered" style="">
+                <thead>
+                    <tr>
+                        <th>Geçerlilik Tarihi</th>
+                        <th>Tutar</th>
+                        <th>Açıklama</th>
+                        <th>Kupon Kodu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>10.12.2019 - 31.12.2019</td>
+                        <td>10 ₺</td>
+                        <td>Yılbaşı Kampanyası kapsamında 31 Aralık 2019 tarihine kadar kullanabileceğiniz 10 TL indirim çekiniz bulunmaktadır.</td>
+                        <td>YENIYIL10</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

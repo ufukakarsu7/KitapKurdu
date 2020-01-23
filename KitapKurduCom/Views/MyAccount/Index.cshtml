@@ -1,0 +1,286 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles
+{
+    <style>
+        .icons {
+            width: 150px;
+            height: 150px;
+            cursor:pointer;
+        }
+        .container {
+            margin-top:200px;
+            padding-bottom:100px;
+            text-align:center;
+            width:900px;
+        }
+
+    </style>
+}
+        @{ 
+            int id = 0;
+            if (Session["kullanici"]!=null)
+            {
+
+                id= (int)Session["kullanici"];
+            }
+            else
+            {
+                Response.Redirect("/Account");
+            }
+      }
+   
+    <div class="container">
+        <div class="row">
+            <div class="col"><a href="/MyAccount/UserInfo?id=@id"><img class="icons" src="~/images/myaccounticons/kullanicibtn.png" /></a></div>
+            <div class="col"><a href="~/ShoppingCart/Detail"><img class="icons" src="~/images/myaccounticons/sepetbtn.png" /></a></div>
+            <div class="col"><a href="/MyAccount/Addresses?id=@id"><img class="icons" src="~/images/myaccounticons/adresbtn.png" /></a></div>
+            <div class="col"><a href="/MyAccount/Orders"><img class="icons" src="~/images/myaccounticons/siparisbtn.png" /></a></div>
+            <div class="col"><a href="/MyAccount/Coupons"><img class="icons" src="~/images/myaccounticons/indirimcekibtn.png" /></a></div>
+        </div>
+        <div class="row">
+            <div class="col"><a href="/MyAccount/UserInfo">Üye Bilgileri</a></div>
+            <div class="col"><a href="~/ShoppingCart/Detail">Sepetim</a></div>
+            <div class="col"><a href="/MyAccount/Addresses">Adreslerim</a></div>
+            <div class="col"><a href="/MyAccount/Orders">Siparişlerim</a></div>
+            <div class="col"><a href="/MyAccount/Coupons">İndirim Kuponları</a></div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <a @*href="/MyAccount/ConsumerRights"*@ data-target="#exampleModalLong" data-toggle="modal">
+                    <img class="icons" src="~/images/myaccounticons/tuketicihaklaribtn.png" />
+
+                    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Tüketici Hakları</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    İşbu Gizlilik Politikası'nda kullanılan "Kişisel Bilgiler" terimi sizi tanımlayabilecek isminiz, doğum tarihiniz, e- posta adresiniz veya posta adresiniz dahil fakat bunlarla sınırlı olmamak kaydıyla kredi kartı bilgileriniz, kimlik bilgileriniz gibi bilgileri ifade etmektedir.
+                                    Okuoku Kitap Yay. Dağ. Paz. San. Ve Tic. Ltd. Şti. olarak biz, ( aşağıda kısaca "OKUOKU" olarak anılacaktır. ) işbu gizlilik politikası ile tüm kullanıcılarımızı haklarında www.okuoku.com adlı internet sitesinden toplanan Kişisel Bilgilerin kullanımı ve ifşası hakkında bilgilendirmeyi hedeflemekteyiz. OKUOKU olarak biz, kullanıcılarımızın gizliliğine değer vermekte olup, bizimle paylaşılan kişisel bilgilerin gizliliği ve bilgilerin güvenliğini ile ilgili kullanıcılarımızın kaygılarını saygıyla karşılamaktayız. Bu nedenle "Gizlilik Politikası" gizliliğinizi korumak ve bilgi temininde güvenli bir deneyim sağlamanız için tasarlamış olup, kullanıcıların onayı olmadan kişisel bilgilerini kullanmayacak ve Kişisel Bilgilerin kullanılmasında, tamamen uluslararası alanda kabul edilen mahremiyet koruma standartlarına uymayı taahhüt etmektedir.
+
+                                    OKUOKU olarak www.okuoku.com adlı internet sitesini kullanmadan veya bize Kişisel Bilgilerinizi iletmeden önce kullanıcıların mevcut Gizlilik Politikası'nı okumasını rica ediyoruz. Bu gizlilik politikası herhangi bir sebepten dolayı bildirimde bulunmaksızın zaman zaman değiştirebilir veyahut da yenilenebilir. Bizler yenilenen sözleşmeler konusunda siz kullanıcıları uyarmayabiliriz. Ancak bu durumda Gizlilik Politikası'nın söz konusu değişiklikleri yansıtan güncellenmiş halinin yükleyeceğini belirtmek isteriz. İşbu sebeple güncellenen Gizlilik Politikası hakkında kullanıcıların bilgi sahibi olduklarını periyodik olarak gözden geçirmesini öneririz. Sizlere önerimiz, yapılan değişikliklerden sorumlu olacağınız için, bu gizlilik politikasını her kullanım öncesi kontrol etmenizdir. OKUOKU kullanıcıların izniyle Kişisel Bilgileri aşağıdaki amaçlar için kullanacaktır, hiçbir durumda öngörülen amacın dışında kullanmayacaktır.
+
+
+                                    Siparişlerinizi almak, Ürün ve hizmetlerimizi sunmak, Ödemelerinizi gerçekleştirmek, Siparişleriniz, ürünler ve hizmetler hakkında pazarlama amacıyla sizinle irtibata geçmek, Bilgilerinizi güncellemek, Üyeliğinizi yönetmek ve sürdürmek, İlginizi çekebilecek ürün ve hizmetleri önermek, 3. şahısların teknik, lojistik ve benzeri diğer işlevlerini bizim adımıza yerine getirmelerini sağlamak, Yayınlar göndermek, Elektronik posta ile bülten göndermek ya da bildirimler de bulunmak, Sorularınızı cevaplamak ve etkin bir müşteri hizmeti sunmak, Yeni içerikler hakkında bilgi vermek,Tarafınızca paylaşılan Kişiler Bilgiler'in hiçbir durumda burada öngörülen amaçlar ve hizmetler dışında kullanılmayacağı belirtilmiş olup, OKUOKU tarafından iletilen işbu ticari elektronik iletileri almak istemiyor ve almayı onaylamıyor iseniz Üyelik listemizden her zaman çıkabilirsiniz. OKUOKU bu şekilde gönderim listesinden çıkışınızı sağlayacaktır. Ticari elektronik iletilerin herhangi bir zamanda da alımına son vermek istenmesi halinde Üyelik Profil sayfasında yer alan iletişim bilgileri aracılığı ile OKUOKU ile irtibata geçerek isteklerinizi iletebilirsiniz.Toplanan mali bilgiler de satın aldığınız ürün ve hizmetler ile ilgili satış süreci ve muhasebeleştirilmesi için kullanılmaktadır. www.okuoku.com adlı internet sitemizde bir satın alma yaptığınızda size ait mali bilgilerin, işleminizi gerçekleştirmek için gerekli 3. şahıslara (bankalar, kredi kartı şirketleri vb.) verilmesini kabul etmektesiniz. Paylaşılacak bilgiler kredi kartı numarası, son kullanma tarihi, CVV2 de dahil gerekli tüm mali bilgileri içerir.
+
+
+                                    Kişisel Bilgiler ile www.okuoku.com Adlı internet sitemizden size hizmetleri verebilmek için temin edilen işbu bilgiler hizmetin amacına yönelik olup, ilke olarak, üçüncü kişilere satılmaz, kiralanmaz ya da başka şekilde kullandırılmaz ve siz bizzat aksini talep etmediğiniz sürece üçüncü kişilerle hiçbir suretle paylaşılmaz. Şu kadar ki, OKUOKU yürürlükteki mevzuat uyarınca yetkili, idari ve resmi makamlardan usulüne uygun olarak talep gelmesi halinde size ait uhdesinde bulunan bilgilerini ilgili yetkili makamlarla paylaşacaktır.
+
+
+                                    www.okuoku.com adlı internet sitemizi kullandığınız andan itibaren sizden toplanan tüm bilgileri bizim belirttiğimiz şekilde ve nedenlerle, bu gizlilik politikasında anlatıldığı gibi, kullanmamızı kabul etmiş olursunuz. Yukarıdaki amaç için elde edilen bilgiler, tamamen sizin özgür iradenizle tarafımıza sağlanmaktadır. Bu Kişisel Bilgileri bize verip vermemekte kullanıcılar serbesttir. Ancak, kullanıcılara daha çabuk ve kaliteli hizmet sunabilmemiz için, işbu www.okuoku.com adlı internet sitesinde kullanıcılardan talep edilen bilgilerin tamamını vermelerini önermekteyiz. Ayrıca, talep edilen hizmetin gerektirdiği zorunlu bilgilerin verilmemesi durumunda talebin yerine getirilmesinin mümkün olamayacağını dikkatlerinize sunarız. Kullanıcılar tarafından verilen bilgilerin doğru ve eksiksiz olması kullanıcıların sorumluluğundadır. Yanlış, yanıltıcı veya eksik bilgi verilmemesi rica olunur. Böyle bir durumda OKUOKU hiçbir sorumluluk kabul etmeyecektir. Yanlış, yanıltıcı veya eksik bilgi verilmesi nedeniyle OKUOKU'nun bir zarara uğraması halinde bu zararı tazmin yükümlülüğü kullanıcılara aittir.
+
+
+
+                                    Bu bilgiler ile ilgili her türlü kullanım Türkiye içinde yapılacaktır. Eğer bu sözleşme ile ilgili herhangi bir sorunuz veya kişisel bilgilerinizin kullanımı veya ifşası ile ilgili herhangi bir düşünceniz var ise bilgi@okuoku.com adresinden ulaşabilirsiniz.
+
+
+                                    www.okuoku.com adlı internet sitemiz OKUOKU’nun kontrolü altında olmayan başka internet sitelerine bağlantı veya referans içerebilir. Bu bağlantıların www.okuoku.com. Adlı internet sitesinde yer alması, bizim bu siteler ile herhangi bir bağımız bulunduğu anlamına gelmez. OKUOKU, işbu internet sitelerinin içerikleri veya içerdikleri diğer bağlantılardan sorumlu değildir. Bu diğer internet siteleri kullanıcıların bilgisayarına kendi çerezlerini yükleyebilir ve bilgi toplayabilirler. Diğer internet siteleri kendi gizlilik ve kullanım sözleşmelerine sahiptir ve kullanıcılar tarafından paylaşılan bilgileri farklı amaçlar için kullanabilirler. OKUOKU'nun tavsiyesi diğer internet sitelerini kullanmadan önce kullanıcıların sözleşmelerini okumalarıdır. Bu internet sitelerinden ayrı olarak Kişisel Bilgilere ek olarak www.okuoku.com adlı internet sitesi kullanıcılar tarafından ziyaret edildiğinde kullanıcılar hakkında başkaca bilgiler de toplanabilir, derlenebilir. Otomatik olarak derlenen teşhis edebilirlik niteliğine sahip olmayan bu bilgiler, cookies adı verilen çeşitli teknolojiler ile derlenmektedir. Cookies, web sitesinden bilgisayarların sabit diskine aktarılan küçük çaplı metin dosyalarıdır. Bu bilgileri sitemizi, ilgilendiğiniz ve ihtiyaç duyduğunuz ürünlerimizi değiştirebilmek için toplamaktayız. Tercihen "cookies" reddetmek veya "cookie" gönderildiğinde ikaz edilmek açısından kullanıcılar kendi web gezginlerini ayarlayabilirler. Girilen sitede "cookie"leri reddetmek, sitenin bazı alanlarını gezmeyi veya site ziyaret edildiğinde kişiselleştirilmiş bilgilerin alınmasını engelleyebilir. Sitemizi ziyaret ettiğiniz her zaman, sunucumuz tarayıcınız tarafından her sayfa görüntülemenizde yollanan bilgileri kaydeder ("Log bilgisi"). Bu log bilgisi IP adresiniz, tarayıcı türünüz, ziyarette bulunduğunuz domain, gezdiğiniz web siteleri ve arama kriterleriniz gibi bilgileri saklar. Çoğu kullanıcının IP adresi her çevirim içi oluşunda değişir. Biz log bilgilerini sitemizin teknik analizini yapabilmekte ve verdiğimiz hizmetin başarısını sağlayabilmekte kullanmaktayız. Biz edindiğimiz ip adresini, kullanım veya gizlilik politikamız ihlal edilmediği sürece, herhangi bir kişisel bilgi ile eşleştirmemekteyiz.
+
+
+
+
+                                    Bu site 18 yaş altındaki çocuklar için uygun değildir. Eğer bir ebeveyn çocuğunun siteye kendi rızası olmadan kişisel bilgi girdiğini fark eder ise bu kişisel bilgileri bizler ile site üzerinden paylaşabilir. Biz bilerek 18 yaş altındaki çocuklardan bilgi talep etmeyiz. Eğer herhangi bir şekilde 18 yaşın altındaki bir kullanıcının bizim ile kişisel bilgi paylaştığını fark edersek, bu bilgileri sistemden sileriz.
+
+                                    Gizlilik Politikamız ile ilgili her türlü soru ve öneriniz için www.okuoku.com Adlı internet sitemizdeki iletişim bölümünden bize ulaşabilirsin
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                                    <button type="button" class="btn btn-primary">Onayla</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </a>
+            </div>
+            <div class="col">
+                <a @*href="/MyAccount/SalesAgreement"*@ data-target="#SalesAgreement" data-toggle="modal">
+                    <img class="icons" src="~/images/myaccounticons/satissozlesmesibtn.png" />
+
+                    <div class="modal fade" id="SalesAgreement" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Satış Sözleşmesi</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    İşbu Gizlilik Politikası'nda kullanılan "Kişisel Bilgiler" terimi sizi tanımlayabilecek isminiz, doğum tarihiniz, e- posta adresiniz veya posta adresiniz dahil fakat bunlarla sınırlı olmamak kaydıyla kredi kartı bilgileriniz, kimlik bilgileriniz gibi bilgileri ifade etmektedir.
+                                    Okuoku Kitap Yay. Dağ. Paz. San. Ve Tic. Ltd. Şti. olarak biz, ( aşağıda kısaca "OKUOKU" olarak anılacaktır. ) işbu gizlilik politikası ile tüm kullanıcılarımızı haklarında www.okuoku.com adlı internet sitesinden toplanan Kişisel Bilgilerin kullanımı ve ifşası hakkında bilgilendirmeyi hedeflemekteyiz. OKUOKU olarak biz, kullanıcılarımızın gizliliğine değer vermekte olup, bizimle paylaşılan kişisel bilgilerin gizliliği ve bilgilerin güvenliğini ile ilgili kullanıcılarımızın kaygılarını saygıyla karşılamaktayız. Bu nedenle "Gizlilik Politikası" gizliliğinizi korumak ve bilgi temininde güvenli bir deneyim sağlamanız için tasarlamış olup, kullanıcıların onayı olmadan kişisel bilgilerini kullanmayacak ve Kişisel Bilgilerin kullanılmasında, tamamen uluslararası alanda kabul edilen mahremiyet koruma standartlarına uymayı taahhüt etmektedir.
+
+                                    OKUOKU olarak www.okuoku.com adlı internet sitesini kullanmadan veya bize Kişisel Bilgilerinizi iletmeden önce kullanıcıların mevcut Gizlilik Politikası'nı okumasını rica ediyoruz. Bu gizlilik politikası herhangi bir sebepten dolayı bildirimde bulunmaksızın zaman zaman değiştirebilir veyahut da yenilenebilir. Bizler yenilenen sözleşmeler konusunda siz kullanıcıları uyarmayabiliriz. Ancak bu durumda Gizlilik Politikası'nın söz konusu değişiklikleri yansıtan güncellenmiş halinin yükleyeceğini belirtmek isteriz. İşbu sebeple güncellenen Gizlilik Politikası hakkında kullanıcıların bilgi sahibi olduklarını periyodik olarak gözden geçirmesini öneririz. Sizlere önerimiz, yapılan değişikliklerden sorumlu olacağınız için, bu gizlilik politikasını her kullanım öncesi kontrol etmenizdir. OKUOKU kullanıcıların izniyle Kişisel Bilgileri aşağıdaki amaçlar için kullanacaktır, hiçbir durumda öngörülen amacın dışında kullanmayacaktır.
+
+
+                                    Siparişlerinizi almak, Ürün ve hizmetlerimizi sunmak, Ödemelerinizi gerçekleştirmek, Siparişleriniz, ürünler ve hizmetler hakkında pazarlama amacıyla sizinle irtibata geçmek, Bilgilerinizi güncellemek, Üyeliğinizi yönetmek ve sürdürmek, İlginizi çekebilecek ürün ve hizmetleri önermek, 3. şahısların teknik, lojistik ve benzeri diğer işlevlerini bizim adımıza yerine getirmelerini sağlamak, Yayınlar göndermek, Elektronik posta ile bülten göndermek ya da bildirimler de bulunmak, Sorularınızı cevaplamak ve etkin bir müşteri hizmeti sunmak, Yeni içerikler hakkında bilgi vermek,Tarafınızca paylaşılan Kişiler Bilgiler'in hiçbir durumda burada öngörülen amaçlar ve hizmetler dışında kullanılmayacağı belirtilmiş olup, OKUOKU tarafından iletilen işbu ticari elektronik iletileri almak istemiyor ve almayı onaylamıyor iseniz Üyelik listemizden her zaman çıkabilirsiniz. OKUOKU bu şekilde gönderim listesinden çıkışınızı sağlayacaktır. Ticari elektronik iletilerin herhangi bir zamanda da alımına son vermek istenmesi halinde Üyelik Profil sayfasında yer alan iletişim bilgileri aracılığı ile OKUOKU ile irtibata geçerek isteklerinizi iletebilirsiniz.Toplanan mali bilgiler de satın aldığınız ürün ve hizmetler ile ilgili satış süreci ve muhasebeleştirilmesi için kullanılmaktadır. www.okuoku.com adlı internet sitemizde bir satın alma yaptığınızda size ait mali bilgilerin, işleminizi gerçekleştirmek için gerekli 3. şahıslara (bankalar, kredi kartı şirketleri vb.) verilmesini kabul etmektesiniz. Paylaşılacak bilgiler kredi kartı numarası, son kullanma tarihi, CVV2 de dahil gerekli tüm mali bilgileri içerir.
+
+
+                                    Kişisel Bilgiler ile www.okuoku.com Adlı internet sitemizden size hizmetleri verebilmek için temin edilen işbu bilgiler hizmetin amacına yönelik olup, ilke olarak, üçüncü kişilere satılmaz, kiralanmaz ya da başka şekilde kullandırılmaz ve siz bizzat aksini talep etmediğiniz sürece üçüncü kişilerle hiçbir suretle paylaşılmaz. Şu kadar ki, OKUOKU yürürlükteki mevzuat uyarınca yetkili, idari ve resmi makamlardan usulüne uygun olarak talep gelmesi halinde size ait uhdesinde bulunan bilgilerini ilgili yetkili makamlarla paylaşacaktır.
+
+
+                                    www.okuoku.com adlı internet sitemizi kullandığınız andan itibaren sizden toplanan tüm bilgileri bizim belirttiğimiz şekilde ve nedenlerle, bu gizlilik politikasında anlatıldığı gibi, kullanmamızı kabul etmiş olursunuz. Yukarıdaki amaç için elde edilen bilgiler, tamamen sizin özgür iradenizle tarafımıza sağlanmaktadır. Bu Kişisel Bilgileri bize verip vermemekte kullanıcılar serbesttir. Ancak, kullanıcılara daha çabuk ve kaliteli hizmet sunabilmemiz için, işbu www.okuoku.com adlı internet sitesinde kullanıcılardan talep edilen bilgilerin tamamını vermelerini önermekteyiz. Ayrıca, talep edilen hizmetin gerektirdiği zorunlu bilgilerin verilmemesi durumunda talebin yerine getirilmesinin mümkün olamayacağını dikkatlerinize sunarız. Kullanıcılar tarafından verilen bilgilerin doğru ve eksiksiz olması kullanıcıların sorumluluğundadır. Yanlış, yanıltıcı veya eksik bilgi verilmemesi rica olunur. Böyle bir durumda OKUOKU hiçbir sorumluluk kabul etmeyecektir. Yanlış, yanıltıcı veya eksik bilgi verilmesi nedeniyle OKUOKU'nun bir zarara uğraması halinde bu zararı tazmin yükümlülüğü kullanıcılara aittir.
+
+
+
+                                    Bu bilgiler ile ilgili her türlü kullanım Türkiye içinde yapılacaktır. Eğer bu sözleşme ile ilgili herhangi bir sorunuz veya kişisel bilgilerinizin kullanımı veya ifşası ile ilgili herhangi bir düşünceniz var ise bilgi@okuoku.com adresinden ulaşabilirsiniz.
+
+
+                                    www.okuoku.com adlı internet sitemiz OKUOKU’nun kontrolü altında olmayan başka internet sitelerine bağlantı veya referans içerebilir. Bu bağlantıların www.okuoku.com. Adlı internet sitesinde yer alması, bizim bu siteler ile herhangi bir bağımız bulunduğu anlamına gelmez. OKUOKU, işbu internet sitelerinin içerikleri veya içerdikleri diğer bağlantılardan sorumlu değildir. Bu diğer internet siteleri kullanıcıların bilgisayarına kendi çerezlerini yükleyebilir ve bilgi toplayabilirler. Diğer internet siteleri kendi gizlilik ve kullanım sözleşmelerine sahiptir ve kullanıcılar tarafından paylaşılan bilgileri farklı amaçlar için kullanabilirler. OKUOKU'nun tavsiyesi diğer internet sitelerini kullanmadan önce kullanıcıların sözleşmelerini okumalarıdır. Bu internet sitelerinden ayrı olarak Kişisel Bilgilere ek olarak www.okuoku.com adlı internet sitesi kullanıcılar tarafından ziyaret edildiğinde kullanıcılar hakkında başkaca bilgiler de toplanabilir, derlenebilir. Otomatik olarak derlenen teşhis edebilirlik niteliğine sahip olmayan bu bilgiler, cookies adı verilen çeşitli teknolojiler ile derlenmektedir. Cookies, web sitesinden bilgisayarların sabit diskine aktarılan küçük çaplı metin dosyalarıdır. Bu bilgileri sitemizi, ilgilendiğiniz ve ihtiyaç duyduğunuz ürünlerimizi değiştirebilmek için toplamaktayız. Tercihen "cookies" reddetmek veya "cookie" gönderildiğinde ikaz edilmek açısından kullanıcılar kendi web gezginlerini ayarlayabilirler. Girilen sitede "cookie"leri reddetmek, sitenin bazı alanlarını gezmeyi veya site ziyaret edildiğinde kişiselleştirilmiş bilgilerin alınmasını engelleyebilir. Sitemizi ziyaret ettiğiniz her zaman, sunucumuz tarayıcınız tarafından her sayfa görüntülemenizde yollanan bilgileri kaydeder ("Log bilgisi"). Bu log bilgisi IP adresiniz, tarayıcı türünüz, ziyarette bulunduğunuz domain, gezdiğiniz web siteleri ve arama kriterleriniz gibi bilgileri saklar. Çoğu kullanıcının IP adresi her çevirim içi oluşunda değişir. Biz log bilgilerini sitemizin teknik analizini yapabilmekte ve verdiğimiz hizmetin başarısını sağlayabilmekte kullanmaktayız. Biz edindiğimiz ip adresini, kullanım veya gizlilik politikamız ihlal edilmediği sürece, herhangi bir kişisel bilgi ile eşleştirmemekteyiz.
+
+
+
+
+                                    Bu site 18 yaş altındaki çocuklar için uygun değildir. Eğer bir ebeveyn çocuğunun siteye kendi rızası olmadan kişisel bilgi girdiğini fark eder ise bu kişisel bilgileri bizler ile site üzerinden paylaşabilir. Biz bilerek 18 yaş altındaki çocuklardan bilgi talep etmeyiz. Eğer herhangi bir şekilde 18 yaşın altındaki bir kullanıcının bizim ile kişisel bilgi paylaştığını fark edersek, bu bilgileri sistemden sileriz.
+
+                                    Gizlilik Politikamız ile ilgili her türlü soru ve öneriniz için www.okuoku.com Adlı internet sitemizdeki iletişim bölümünden bize ulaşabilirsin
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                                    <button type="button" class="btn btn-primary">Onayla</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </a>
+            </div>
+            <div class="col">
+                <a @*href="/MyAccount/Security"*@ data-target="#Security" data-toggle="modal">
+                    <img class="icons" src="~/images/myaccounticons/guvenlikbtn.png" />
+
+                    <div class="modal fade" id="Security" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalScrollableTitle">Güvenlik İlkeleri</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    İşbu Gizlilik Politikası'nda kullanılan "Kişisel Bilgiler" terimi sizi tanımlayabilecek isminiz, doğum tarihiniz, e- posta adresiniz veya posta adresiniz dahil fakat bunlarla sınırlı olmamak kaydıyla kredi kartı bilgileriniz, kimlik bilgileriniz gibi bilgileri ifade etmektedir.
+                                    Okuoku Kitap Yay. Dağ. Paz. San. Ve Tic. Ltd. Şti. olarak biz, ( aşağıda kısaca "OKUOKU" olarak anılacaktır. ) işbu gizlilik politikası ile tüm kullanıcılarımızı haklarında www.okuoku.com adlı internet sitesinden toplanan Kişisel Bilgilerin kullanımı ve ifşası hakkında bilgilendirmeyi hedeflemekteyiz. OKUOKU olarak biz, kullanıcılarımızın gizliliğine değer vermekte olup, bizimle paylaşılan kişisel bilgilerin gizliliği ve bilgilerin güvenliğini ile ilgili kullanıcılarımızın kaygılarını saygıyla karşılamaktayız. Bu nedenle "Gizlilik Politikası" gizliliğinizi korumak ve bilgi temininde güvenli bir deneyim sağlamanız için tasarlamış olup, kullanıcıların onayı olmadan kişisel bilgilerini kullanmayacak ve Kişisel Bilgilerin kullanılmasında, tamamen uluslararası alanda kabul edilen mahremiyet koruma standartlarına uymayı taahhüt etmektedir.
+
+                                    OKUOKU olarak www.okuoku.com adlı internet sitesini kullanmadan veya bize Kişisel Bilgilerinizi iletmeden önce kullanıcıların mevcut Gizlilik Politikası'nı okumasını rica ediyoruz. Bu gizlilik politikası herhangi bir sebepten dolayı bildirimde bulunmaksızın zaman zaman değiştirebilir veyahut da yenilenebilir. Bizler yenilenen sözleşmeler konusunda siz kullanıcıları uyarmayabiliriz. Ancak bu durumda Gizlilik Politikası'nın söz konusu değişiklikleri yansıtan güncellenmiş halinin yükleyeceğini belirtmek isteriz. İşbu sebeple güncellenen Gizlilik Politikası hakkında kullanıcıların bilgi sahibi olduklarını periyodik olarak gözden geçirmesini öneririz. Sizlere önerimiz, yapılan değişikliklerden sorumlu olacağınız için, bu gizlilik politikasını her kullanım öncesi kontrol etmenizdir. OKUOKU kullanıcıların izniyle Kişisel Bilgileri aşağıdaki amaçlar için kullanacaktır, hiçbir durumda öngörülen amacın dışında kullanmayacaktır.
+
+
+                                    Siparişlerinizi almak, Ürün ve hizmetlerimizi sunmak, Ödemelerinizi gerçekleştirmek, Siparişleriniz, ürünler ve hizmetler hakkında pazarlama amacıyla sizinle irtibata geçmek, Bilgilerinizi güncellemek, Üyeliğinizi yönetmek ve sürdürmek, İlginizi çekebilecek ürün ve hizmetleri önermek, 3. şahısların teknik, lojistik ve benzeri diğer işlevlerini bizim adımıza yerine getirmelerini sağlamak, Yayınlar göndermek, Elektronik posta ile bülten göndermek ya da bildirimler de bulunmak, Sorularınızı cevaplamak ve etkin bir müşteri hizmeti sunmak, Yeni içerikler hakkında bilgi vermek,Tarafınızca paylaşılan Kişiler Bilgiler'in hiçbir durumda burada öngörülen amaçlar ve hizmetler dışında kullanılmayacağı belirtilmiş olup, OKUOKU tarafından iletilen işbu ticari elektronik iletileri almak istemiyor ve almayı onaylamıyor iseniz Üyelik listemizden her zaman çıkabilirsiniz. OKUOKU bu şekilde gönderim listesinden çıkışınızı sağlayacaktır. Ticari elektronik iletilerin herhangi bir zamanda da alımına son vermek istenmesi halinde Üyelik Profil sayfasında yer alan iletişim bilgileri aracılığı ile OKUOKU ile irtibata geçerek isteklerinizi iletebilirsiniz.Toplanan mali bilgiler de satın aldığınız ürün ve hizmetler ile ilgili satış süreci ve muhasebeleştirilmesi için kullanılmaktadır. www.okuoku.com adlı internet sitemizde bir satın alma yaptığınızda size ait mali bilgilerin, işleminizi gerçekleştirmek için gerekli 3. şahıslara (bankalar, kredi kartı şirketleri vb.) verilmesini kabul etmektesiniz. Paylaşılacak bilgiler kredi kartı numarası, son kullanma tarihi, CVV2 de dahil gerekli tüm mali bilgileri içerir.
+
+
+                                    Kişisel Bilgiler ile www.okuoku.com Adlı internet sitemizden size hizmetleri verebilmek için temin edilen işbu bilgiler hizmetin amacına yönelik olup, ilke olarak, üçüncü kişilere satılmaz, kiralanmaz ya da başka şekilde kullandırılmaz ve siz bizzat aksini talep etmediğiniz sürece üçüncü kişilerle hiçbir suretle paylaşılmaz. Şu kadar ki, OKUOKU yürürlükteki mevzuat uyarınca yetkili, idari ve resmi makamlardan usulüne uygun olarak talep gelmesi halinde size ait uhdesinde bulunan bilgilerini ilgili yetkili makamlarla paylaşacaktır.
+
+
+                                    www.okuoku.com adlı internet sitemizi kullandığınız andan itibaren sizden toplanan tüm bilgileri bizim belirttiğimiz şekilde ve nedenlerle, bu gizlilik politikasında anlatıldığı gibi, kullanmamızı kabul etmiş olursunuz. Yukarıdaki amaç için elde edilen bilgiler, tamamen sizin özgür iradenizle tarafımıza sağlanmaktadır. Bu Kişisel Bilgileri bize verip vermemekte kullanıcılar serbesttir. Ancak, kullanıcılara daha çabuk ve kaliteli hizmet sunabilmemiz için, işbu www.okuoku.com adlı internet sitesinde kullanıcılardan talep edilen bilgilerin tamamını vermelerini önermekteyiz. Ayrıca, talep edilen hizmetin gerektirdiği zorunlu bilgilerin verilmemesi durumunda talebin yerine getirilmesinin mümkün olamayacağını dikkatlerinize sunarız. Kullanıcılar tarafından verilen bilgilerin doğru ve eksiksiz olması kullanıcıların sorumluluğundadır. Yanlış, yanıltıcı veya eksik bilgi verilmemesi rica olunur. Böyle bir durumda OKUOKU hiçbir sorumluluk kabul etmeyecektir. Yanlış, yanıltıcı veya eksik bilgi verilmesi nedeniyle OKUOKU'nun bir zarara uğraması halinde bu zararı tazmin yükümlülüğü kullanıcılara aittir.
+
+
+
+                                    Bu bilgiler ile ilgili her türlü kullanım Türkiye içinde yapılacaktır. Eğer bu sözleşme ile ilgili herhangi bir sorunuz veya kişisel bilgilerinizin kullanımı veya ifşası ile ilgili herhangi bir düşünceniz var ise bilgi@okuoku.com adresinden ulaşabilirsiniz.
+
+
+                                    www.okuoku.com adlı internet sitemiz OKUOKU’nun kontrolü altında olmayan başka internet sitelerine bağlantı veya referans içerebilir. Bu bağlantıların www.okuoku.com. Adlı internet sitesinde yer alması, bizim bu siteler ile herhangi bir bağımız bulunduğu anlamına gelmez. OKUOKU, işbu internet sitelerinin içerikleri veya içerdikleri diğer bağlantılardan sorumlu değildir. Bu diğer internet siteleri kullanıcıların bilgisayarına kendi çerezlerini yükleyebilir ve bilgi toplayabilirler. Diğer internet siteleri kendi gizlilik ve kullanım sözleşmelerine sahiptir ve kullanıcılar tarafından paylaşılan bilgileri farklı amaçlar için kullanabilirler. OKUOKU'nun tavsiyesi diğer internet sitelerini kullanmadan önce kullanıcıların sözleşmelerini okumalarıdır. Bu internet sitelerinden ayrı olarak Kişisel Bilgilere ek olarak www.okuoku.com adlı internet sitesi kullanıcılar tarafından ziyaret edildiğinde kullanıcılar hakkında başkaca bilgiler de toplanabilir, derlenebilir. Otomatik olarak derlenen teşhis edebilirlik niteliğine sahip olmayan bu bilgiler, cookies adı verilen çeşitli teknolojiler ile derlenmektedir. Cookies, web sitesinden bilgisayarların sabit diskine aktarılan küçük çaplı metin dosyalarıdır. Bu bilgileri sitemizi, ilgilendiğiniz ve ihtiyaç duyduğunuz ürünlerimizi değiştirebilmek için toplamaktayız. Tercihen "cookies" reddetmek veya "cookie" gönderildiğinde ikaz edilmek açısından kullanıcılar kendi web gezginlerini ayarlayabilirler. Girilen sitede "cookie"leri reddetmek, sitenin bazı alanlarını gezmeyi veya site ziyaret edildiğinde kişiselleştirilmiş bilgilerin alınmasını engelleyebilir. Sitemizi ziyaret ettiğiniz her zaman, sunucumuz tarayıcınız tarafından her sayfa görüntülemenizde yollanan bilgileri kaydeder ("Log bilgisi"). Bu log bilgisi IP adresiniz, tarayıcı türünüz, ziyarette bulunduğunuz domain, gezdiğiniz web siteleri ve arama kriterleriniz gibi bilgileri saklar. Çoğu kullanıcının IP adresi her çevirim içi oluşunda değişir. Biz log bilgilerini sitemizin teknik analizini yapabilmekte ve verdiğimiz hizmetin başarısını sağlayabilmekte kullanmaktayız. Biz edindiğimiz ip adresini, kullanım veya gizlilik politikamız ihlal edilmediği sürece, herhangi bir kişisel bilgi ile eşleştirmemekteyiz.
+
+
+
+
+                                    Bu site 18 yaş altındaki çocuklar için uygun değildir. Eğer bir ebeveyn çocuğunun siteye kendi rızası olmadan kişisel bilgi girdiğini fark eder ise bu kişisel bilgileri bizler ile site üzerinden paylaşabilir. Biz bilerek 18 yaş altındaki çocuklardan bilgi talep etmeyiz. Eğer herhangi bir şekilde 18 yaşın altındaki bir kullanıcının bizim ile kişisel bilgi paylaştığını fark edersek, bu bilgileri sistemden sileriz.
+
+                                    Gizlilik Politikamız ile ilgili her türlü soru ve öneriniz için www.okuoku.com Adlı internet sitemizdeki iletişim bölümünden bize ulaşabilirsin
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                                    <button type="button" class="btn btn-primary">Onayla</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="/MyAccount/Contact">
+                    <img class="icons" src="~/images/myaccounticons/iletisimbtn.png" />
+                </a>
+            </div>
+            <div class="col"><a href=""><img class="icons" src="~/images/myaccounticons/cikisbtn.png" /></a></div>
+        </div>
+
+        <div class="row">
+            <div class="col"><a href="/MyAccount/ConsumerRights">Tüketici Hakları</a></div>
+            <div class="col"><a href="/MyAccount/SalesAgreement">Satış Sözleşmesi</a></div>
+            <div class="col"><a href="/MyAccount/Security">Güvenlik İlkeleri</a></div>
+            <div class="col"><a href="/MyAccount/Contact">Bize Ulaşın</a></div>
+            <div class="col">@Html.ActionLink("Oturumu Kapat", "LogOut", "MyAccount")</div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<div class="container">
+    <div class="row">
+        <div class="col"><a href="/MyAccount/UserInfo?id=1"><img class="icons" src="~/images/myaccounticons/kullanicibtn.png" /></a></div>
+        <div class="col"><a href="~/cart.html"><img class="icons" src="~/images/myaccounticons/sepetbtn.png" /></a></div>
+        <div class="col"><a href="/MyAccount/Addresses?id=1"><img class="icons" src="~/images/myaccounticons/adresbtn.png" /></a></div>
+        <div class="col"><a href="/MyAccount/Orders"><img class="icons" src="~/images/myaccounticons/siparisbtn.png" /></a></div>
+        <div class="col"><a href="/MyAccount/Coupons"><img class="icons" src="~/images/myaccounticons/indirimcekibtn.png" /></a></div>
+    </div>
+    <div class="row">
+        <div class="col"><a href="/MyAccount/UserInfo">Üye Bilgileri</a></div>
+        <div class="col"><a href="~/cart.html">Sepetim</a></div>
+        <div class="col"><a href="/MyAccount/Addresses">Adreslerim</a></div>
+        <div class="col"><a href="/MyAccount/Orders">Siparişlerim</a></div>
+        <div class="col"><a href="/MyAccount/Coupons">İndirim Kuponları</a></div>
+    </div>
+    <div class="row">
+        <div class="col"><a href="/MyAccount/ConsumerRights"><img class="icons" src="~/images/myaccounticons/tuketicihaklaribtn.png" /></a></div>
+        <div class="col"><a href="/MyAccount/SalesAgreement"><img class="icons" src="~/images/myaccounticons/satissozlesmesibtn.png" /></a></div>
+        <div class="col"><a href="/MyAccount/Security"><img class="icons" src="~/images/myaccounticons/guvenlikbtn.png" /></a></div>
+        <div class="col"><a href="/MyAccount/Contact"><img class="icons" src="~/images/myaccounticons/iletisimbtn.png" /></a></div>
+        <div class="col"><a href=""><img class="icons" src="~/images/myaccounticons/cikisbtn.png" /></div>
+    </div>
+    <div class="row">
+        <div class="col"><a href="/MyAccount/ConsumerRights">Tüketici Hakları</a></div>
+        <div class="col"><a href="/MyAccount/SalesAgreement">Satış Sözleşmesi</a></div>
+        <div class="col"><a href="/MyAccount/Security">Güvenlik İlkeleri</a></div>
+        <div class="col"><a href="/MyAccount/Contact">Bize Ulaşın</a></div>
+        <div class="col">@Html.ActionLink("Oturumu Kapat", "LogOut", "MyAccount")</div>
+    </div>
+</div>*@

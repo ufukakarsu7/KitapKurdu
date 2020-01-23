@@ -1,0 +1,139 @@
+﻿@model  KitapKurdu.UI.Models.Entity.Order
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
+    decimal totalPrice = 0;
+    int quantity = 0;
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.FirstName)
+        </dt>
+
+        <dd>
+            @Model.Customer.FirstName @Model.Customer.LastName
+        </dd>
+
+        @*<dt>
+                @Html.DisplayNameFor(model => model.Invoice.ID)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Invoice.ID)
+            </dd>*@
+
+        @*<dt>
+                @Html.DisplayNameFor(model => model.Shipper.CompanyName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Shipper.CompanyName)
+            </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderTime)
+        </dd>
+
+        @*<dt>
+                @Html.DisplayNameFor(model => model.DateOfDelivery)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateOfDelivery)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DateOfShipping)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateOfShipping)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CargoNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CargoNumber)
+            </dd>*@
+
+    </dl>
+    <br><b>SİPARİŞLER</b><br>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th></th>
+                <th>KİTAP</th>
+                <th>ADET</th>
+                <th>FİYAT</th>
+            </tr>
+        </thead>
+        @{
+            int sayac = 1;
+
+            foreach (var item in Model.OrderDetails)
+            {
+                <tr>
+                    <td><b>@(sayac++) </b></td>
+                    <td>  @item.Book.BookName</td>
+                    <td> @item.Quantity</td>
+                    <td> @item.UnitPrice.ToString("0.00 ₺")</td>
+                </tr>
+            }
+        }
+    </table>
+    <br />
+
+    @foreach (var item in Model.OrderDetails)
+    {
+        quantity += item.Quantity;
+        totalPrice += item.UnitPrice * item.Quantity;
+
+    }
+    <p><b>TOPLAM TUTAR :</b> @totalPrice.ToString("0.00 ₺")</p>
+
+    <br />
+
+    @using (Html.BeginForm())
+    {
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsConfirmed, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.IsConfirmed)
+                    @Html.ValidationMessageFor(model => model.IsConfirmed, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    }
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

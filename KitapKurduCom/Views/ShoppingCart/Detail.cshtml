@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="pencere">
+    <div class="cart-main-area section-padding--lg bg--white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 ol-lg-12">
+                    <form action="#">
+                        <div class="table-content wnro__table table-responsive">
+                            <table>
+                                <thead>
+                                    <tr class="title-top">
+                                        <th class="product-thumbnail">Image</th>
+                                        <th class="product-name">Product</th>
+                                        <th class="product-price">Price</th>
+                                        <th class="product-quantity">Quantity</th>
+                                        <th class="product-subtotal">Total</th>
+                                        <th class="product-remove">Remove</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="sepeturunler"></tbody>
+                            </table>
+                        </div>
+                    </form>
+
+                    <div class="cartbox__btn" style="float:right">
+                        <ul class="cart__btn__list d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between" >
+
+
+                            <li ><a href="@Url.Action("Complete", "Orders")">Check Out</a></li>
+
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 offset-lg-6">
+                    <div class="cartbox__total__area">
+                        <div class="cartbox-total d-flex justify-content-between">
+                            <ul class="cart__total__list">
+                                <li>Cart total</li>
+                            </ul>
+                            <ul class="cart__total__tk">
+                                <li class="toptutar"></li>
+                            </ul>
+                        </div>
+                        <div class="cart__total__amount">
+                            <span>Grand Total</span>
+                            <span class="karttoplam"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

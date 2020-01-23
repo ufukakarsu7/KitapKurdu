@@ -1,0 +1,115 @@
+﻿@using KitapKurdu.UI.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Book>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table" style="overflow-x:auto; white-space: nowrap;">
+    <tr>
+        <th>
+            KİTAP ADI
+        </th>
+        <th>
+            KİTAP ÖZET
+        </th>
+        <th>
+            FİYAT
+        </th>
+        <th>
+            STOK DURUMU
+        </th>
+        <th>
+            SAYFA SAYISI
+        </th>
+        <th>
+            YAYIN TARİHİ
+        </th>
+        <th>
+            ÜRETİM DURUMU
+        </th>
+        <th>
+            CİLT TİPİ
+        </th>
+        <th>
+            KATEGORİ
+        </th>
+        <th>
+            YAYINEVİ
+        </th>
+        <th>
+            YAZAR
+        </th>
+        <th>
+            ÇEVİRMEN
+        </th>
+        <th>
+            DİL
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BookName)
+        </td>
+        <td style="white-space: nowrap; width: 300px;overflow: hidden;text-overflow: ellipsis; display:block;">
+            @Html.Raw(item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnitPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnitsInStock)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PageNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PublishDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductionState)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoverType.CoverTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.CategoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Publisher.PublisherName)
+        </td>
+        <td>
+            @item.Author.FirstName @item.Author.LastName
+        </td>
+        <td>
+            @item.Translator.FirstName @item.Translator.LastName
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Language.LanguageName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+        </td>
+    </tr>
+    }
+
+</table>
+@Html.PagedListPager(Model, page => Url.Action("index", new { page = page }),
+    new PagedListRenderOptions {
+        LiElementClasses = new List<string> { "btn btn-light","text-black" }
+
+    })

@@ -1,0 +1,91 @@
+﻿@using KitapKurdu.UI.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Order>
+
+@{
+    ViewBag.Title = "Orders";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int quantity = 0;
+    decimal totalPrice = 0;
+}
+
+@section Styles
+{
+    <style>
+        .container {
+            margin-top: 120px;
+            padding-bottom: 100px;
+            width: 1100px;
+        }
+        </style>
+}
+
+
+<div class="container">
+    <div class="row" style="line-height:30px;border:1px solid black">
+        <div class="col-md-12" style="font:bold;font-size:20px;background-color:peru">
+            <div>SİPARİŞLERİM</div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12" style="">
+
+
+            <table class="table">
+                <tr>
+                    <th>
+                        SİPARİŞ NO
+                    </th>
+                    <th>
+                        SİPARİŞ TARİHİ
+                    </th>
+                    <th>
+                        ÜRÜN ADET
+                    </th>
+                    <th>
+                        TUTAR
+                    </th>
+                    <th>
+                        SİPARİŞ DURUMU
+                    </th>
+                </tr>
+                
+
+                @foreach (var item in Model)
+                {
+                    foreach (var data in item.OrderDetails)
+                    {
+                        quantity += data.Quantity;
+                        totalPrice += data.UnitPrice*data.Quantity;
+                    }
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OrderDate)
+                        </td>
+                        <td>
+                            @quantity
+                        </td>
+                        <td>
+                           @totalPrice.ToString("0.00₺")
+                        </td>
+                        <td>
+                            @Html.ActionLink("Detay Görüntüle", "Edit", new { id = item.ID })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }),
+    new PagedListRenderOptions
+    {
+        LiElementClasses = new List<string> { "btn btn-light", "text-black" }
+
+    })

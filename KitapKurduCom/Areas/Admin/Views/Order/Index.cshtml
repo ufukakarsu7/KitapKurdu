@@ -1,0 +1,88 @@
+﻿@model IEnumerable<KitapKurdu.UI.Models.Entity.Order>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.FirstName)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Invoice.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Shipper.CompanyName)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderTime)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.DateOfDelivery)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfShipping)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CargoNumber)
+            </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayTextFor(modelItem => item.Customer.FirstName)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Invoice.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Shipper.CompanyName)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderTime)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.DateOfDelivery)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfShipping)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CargoNumber)
+                </td>*@
+            <td>
+                @Html.ActionLink("SİPARİŞ DETAY", "Details", new { id = item.ID }) |
+                @Html.ActionLink("SİPARİŞ SİL", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section scripts{
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#TransDate").datapicker({
+                format: 'dd/mm/yyyy'
+            })
+        })
+    </script>
+}

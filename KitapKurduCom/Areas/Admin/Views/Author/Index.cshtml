@@ -1,0 +1,60 @@
+﻿@using KitapKurdu.UI.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Author>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => Model.Title)*@
+            Title
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.FirstName)*@
+            FirstName
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.LastName)*@
+            LastName
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+</table><br />
+@Html.PagedListPager(Model, page => Url.Action("index", new { page, pageSize = Model.PageSize }),
+ new PagedListRenderOptions
+ {
+     LiElementClasses = new List<string> { "btn btn-light", "text-black", "table" }
+
+ })
+
+
